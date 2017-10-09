@@ -14,10 +14,8 @@
    "default_popup": "popup.html"
   },
   "permissions": [
-   "activeTab",
-   "webRequest",
-   "background",
-   "storage",
-   "<all_urls>"
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
    ]
 }
