@@ -1,11 +1,15 @@
 var callback = function(details) {
-  details.requestHeaders.push( {name: 'My-Custom-Header', value: 'custom-value'} );
 
-  return {requestHeaders: details.requestHeaders};
+  var headers = details.requestHeaders, blockingResponse = {};
+  headers.push( {name: 'X-Custom-Header', value: 'x-custom-value'} );
+
+
+  blockingResponse.requestHeaders = headers;
+  return blockingResponse;
 };
 
-var filter = {urls: ["https://urlwheremyheaderwillbeset.com"]};
-var opt_extraInfoSpec = ["requestHeaders"];
+var filter = {urls: ["<all_urls>"]};
+var opt_extraInfoSpec = ['requestHeaders', 'blocking'];
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
         callback, filter, opt_extraInfoSpec);
