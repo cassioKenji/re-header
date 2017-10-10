@@ -13,3 +13,12 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome, options: options)
 end
 ```
+
+# using:it
+
+For now you'll need to edit background.js:
+
+```
+var headers = details.requestHeaders, blockingResponse = {};
+headers.push( {name: 'X-Custom-Header', value: 'x-custom-value'} );
+```
